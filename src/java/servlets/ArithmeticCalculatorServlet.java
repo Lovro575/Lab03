@@ -22,19 +22,19 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         
         String firstnumber = request.getParameter("firstNumber");
         String secondnumber = request.getParameter("secondNumber");
+        String noCalculation = "---";
         
          //error cheching
-        if(firstnumber == null || firstnumber.equals("") || secondnumber == null || secondnumber.equals("")) {
+       if(firstnumber == null || firstnumber.equals("") || secondnumber == null || secondnumber.equals("")) {
             request.setAttribute("errorMessage", "Invalid");
             getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
         }
         
-        String noCalculation = "---";
         
         int firstInt = Integer.parseInt(firstnumber);
         int secondInt = Integer.parseInt(secondnumber);
-        int result = 0;
-        
+        int result;
+
         request.setAttribute("firstNum", firstnumber);
         request.setAttribute("secondNum", secondnumber);
         
@@ -44,27 +44,23 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         String modulus = request.getParameter("modulus");
         
        
+       
         if (plus != null) {
             result = firstInt + secondInt;
-            request.setAttribute("result", result);
-            
+            request.setAttribute("result", result);   
         } 
         else if (minus != null) {
             result = firstInt - secondInt;
             request.setAttribute("result", result);
-
         } 
         else if (multiply != null) {
             result = firstInt * secondInt;
             request.setAttribute("result", result);
-
         } 
         else if (modulus != null) {
             result = firstInt % secondInt;
-            
+            request.setAttribute("result", result);
         } 
-        
-        request.setAttribute("result", result);
             getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
        
     }

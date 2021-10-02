@@ -20,15 +20,16 @@ public class AgeCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String age = request.getParameter("age_input");
+        int ageNumber = Integer.parseInt(age);
+        request.setAttribute("ageAttribute", age);
         
-          //error cheching not working
-        if(age == null || age.equals("")) {
+          //error cheching
+        if(age == null || age.equals("") || ageNumber < 1) {
             request.setAttribute("message", "You must give your current age");
             getServletContext().getRequestDispatcher("/WEB-INF/ageCalculator.jsp").forward(request,response);
         }
         
-        int ageNumber = Integer.parseInt(age);
-        request.setAttribute("ageAttribute", age);
+
         
       
         if(ageNumber > 0) {
