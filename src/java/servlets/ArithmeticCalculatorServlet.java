@@ -1,22 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author User
- */
 @WebServlet(name = "ArithmeticCalculatorServlet", urlPatterns = {"/calc"})
 public class ArithmeticCalculatorServlet extends HttpServlet {
 
@@ -33,7 +23,7 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         String firstnumber = request.getParameter("firstNumber");
         String secondnumber = request.getParameter("secondNumber");
         
-         //error cheching not working
+         //error cheching
         if(firstnumber == null || firstnumber.equals("") || secondnumber == null || secondnumber.equals("")) {
             request.setAttribute("errorMessage", "Invalid");
             getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
@@ -76,11 +66,6 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         
         request.setAttribute("result", result);
             getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
-        
-        
-        
-
+       
     }
-
-
 }
